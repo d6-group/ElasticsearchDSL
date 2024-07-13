@@ -100,7 +100,7 @@ class DateHistogramAggregation extends AbstractAggregation
 
         $out = [
             'field' => $this->getField(),
-            'interval' => $this->getInterval(),
+            'fixed_interval' => $this->getInterval(),
         ];
 
         if (!empty($this->format)) {
