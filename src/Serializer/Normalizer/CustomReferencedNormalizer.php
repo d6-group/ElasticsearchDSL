@@ -45,11 +45,14 @@ class CustomReferencedNormalizer extends CustomNormalizer
         return $data instanceof AbstractNormalizable;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getSupportedTypes(?string $format): array
     {
         return [
-            NormalizableInterface::class => __CLASS__ === static::class,
-            DenormalizableInterface::class => __CLASS__ === static::class,
+            NormalizableInterface::class => true,
+            DenormalizableInterface::class => true,
         ];
     }
 
