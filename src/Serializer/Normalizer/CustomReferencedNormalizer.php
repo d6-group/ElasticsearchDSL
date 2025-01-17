@@ -12,6 +12,8 @@
 namespace ONGR\ElasticsearchDSL\Serializer\Normalizer;
 
 use Symfony\Component\Serializer\Normalizer\CustomNormalizer;
+use Symfony\Component\Serializer\Normalizer\DenormalizableInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizableInterface;
 
 /**
  * Normalizer used with referenced normalized objects.
@@ -42,4 +44,13 @@ class CustomReferencedNormalizer extends CustomNormalizer
     {
         return $data instanceof AbstractNormalizable;
     }
+
+    public function getSupportedTypes(?string $format): array
+    {
+        return [
+            NormalizableInterface::class => __CLASS__ === static::class,
+            DenormalizableInterface::class => __CLASS__ === static::class,
+        ];
+    }
+
 }
